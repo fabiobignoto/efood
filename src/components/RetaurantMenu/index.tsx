@@ -34,6 +34,7 @@ const RestaurantMenu = ({ restaurantId }: Props) => {
                   name={item.name}
                   description={item.description}
                   image={item.image}
+                  price={item.price}
                 />
               </li>
             ))}
