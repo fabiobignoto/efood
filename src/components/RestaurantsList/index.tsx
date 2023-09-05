@@ -16,6 +16,7 @@ const RestaurantsList = () => {
               image={restaurante.image}
               grade={restaurante.grade}
               infos={restaurante.infos}
+              type={restaurante.type}
             />
           </li>
         ))}

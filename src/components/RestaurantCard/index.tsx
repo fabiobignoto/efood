@@ -9,12 +9,14 @@ import {
 } from './styles'
 
 import estrela from '../../assets/images/estrela.svg'
+import { info } from 'console'
 
 type Props = {
   id: number
   title: string
   description: string
   infos: string[]
+  type: string
   grade: number
   image: string
 }
@@ -25,9 +27,9 @@ const RestaurantCard = ({
   infos,
   grade,
   image,
+  type,
   id
 }: Props) => {
-  console.log(`Restaurante id: ${id}`)
   return (
     <Card>
       <img className="restaurantImage" src={image} />
@@ -47,6 +49,9 @@ const RestaurantCard = ({
               {info}
             </Button>
           ))}
+          <Button size="small" option={-1}>
+            {type}
+          </Button>
         </Infos>
         <Button size="big" option={id}>
           Saiba Mais
