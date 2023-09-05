@@ -3,7 +3,6 @@ import ButtonCart from '../ButtonCart'
 import { ProductCardCSS, ProductDescription, ProductName } from './style'
 
 const ProductCard = (product: Product) => {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return (
     <ProductCardCSS>
       <img src={product.image} />
