@@ -9,51 +9,40 @@ import {
 } from './styles'
 
 import estrela from '../../assets/images/estrela.svg'
-import { info } from 'console'
+import Restaurant from '../../models/Restaurant'
 
 type Props = {
-  id: number
-  title: string
-  description: string
-  infos: string[]
-  type: string
-  grade: number
-  image: string
+  restaurant: Restaurant
 }
 
-const RestaurantCard = ({
-  title,
-  description,
-  infos,
-  grade,
-  image,
-  type,
-  id
-}: Props) => {
+const RestaurantCard = ({ restaurant }: Props) => {
+  const topTags = []
+  if (restaurant.destacado) {
+    topTags.push('Destaque da semana')
+  }
+  topTags.push(restaurant.tipo)
+
   return (
     <Card>
-      <img className="restaurantImage" src={image} />
+      <img className="restaurantImage" src={restaurant.capa} />
       <CardContainer>
         <CardHeader>
-          <Title>{title}</Title>
+          <Title>{restaurant.titulo}</Title>
           <div>
-            <Title as="span">{grade}</Title>
+            <Title as="span">{restaurant.avaliacao}</Title>
             <img src={estrela} alt="Estrela" />
           </div>
         </CardHeader>
 
-        <Description>{description}</Description>
+        <Description>{restaurant.descricao}</Description>
         <Infos>
-          {infos.map((info) => (
-            <Button size="small" key={info} option={-1}>
+          {topTags.map((info, index) => (
+            <Button size="small" key={index} option={-1}>
               {info}
             </Button>
           ))}
-          <Button size="small" option={-1}>
-            {type}
-          </Button>
         </Infos>
-        <Button size="big" option={id}>
+        <Button size="big" option={restaurant.id}>
           Saiba Mais
         </Button>
       </CardContainer>

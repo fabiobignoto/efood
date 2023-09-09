@@ -9,6 +9,7 @@ export const Card = styled.div`
   .restaurantImage {
     width: 100%;
     height: 217px;
+    object-fit: cover;
   }
 `
 export const CardContainer = styled.div`

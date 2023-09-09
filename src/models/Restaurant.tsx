@@ -2,32 +2,33 @@ import Product from './Product'
 
 class Restaurant {
   id: number
-  title: string
-  description: string
-  type: string
-  infos: string[]
-  grade: number
-  image: string
-  menu: Product[]
+  titulo: string
+  descricao: string
+  tipo: string
+  destacado: boolean
+  avaliacao: number
+  capa: string
+
+  cardapio: Product[]
 
   constructor(
     id: number,
-    title: string,
-    description: string,
-    type: string,
-    infos: string[],
-    grade: number,
-    image: string,
-    menu: Product[]
+    titulo: string,
+    descricao: string,
+    tipo: string,
+    destacado: boolean,
+    avaliacao: number,
+    capa: string,
+    cardapio: Product[]
   ) {
     this.id = id
-    this.title = title
-    this.description = description
-    this.type = type
-    this.infos = infos
-    this.grade = grade
-    this.image = image
-    this.menu = menu
+    this.titulo = titulo
+    this.descricao = descricao
+    this.tipo = tipo
+    this.destacado = destacado
+    this.avaliacao = avaliacao
+    this.capa = capa
+    this.cardapio = cardapio
   }
 }
 

@@ -1,3 +1,4 @@
+import React from 'react'
 import { ButtonCartCSS } from './styles'
 
 type Props = {
@@ -6,7 +7,7 @@ type Props = {
 
 const ButtonCart = ({ action }: Props) => {
   return (
-    <ButtonCartCSS>
+    <ButtonCartCSS type="button">
       <p>{action}</p>
     </ButtonCartCSS>
   )

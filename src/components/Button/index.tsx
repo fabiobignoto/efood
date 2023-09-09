@@ -7,7 +7,7 @@ export type Props = {
 }
 
 const Button = ({ size, children, option }: Props) => {
-  const destiny = `/menu/:${option}`
+  const destiny = `/menu/${option}`
 
   return size === 'big' ? (
     <ButtonLink to={destiny}>{children}</ButtonLink>

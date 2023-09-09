@@ -13,7 +13,6 @@ export const ProductCardCSS = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  position: relative;
   img {
     width: 100%;
     height: 167px;
@@ -30,8 +29,23 @@ export const ProductName = styled.h3`
 `
 
 export const ProductDescription = styled.div`
+  display: block;
   height: 88px;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+
+  p {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+`
+
+export const Teste = styled.div`
+  height: 200px;
+  width: 500px;
+  background-color: green;
+  position: absolute;
+  top: 20px;
 `

@@ -1,23 +1,28 @@
+import Restaurant from '../../models/Restaurant'
 import RestaurantCard from '../RestaurantCard'
 import { RestaurantListCSS, RestaurantListUl } from './styles'
 
-import restaurantsData from '../../data/restaurantsData'
+import { useEffect, useState } from 'react'
+
+export type Restaurants = {
+  restaurants: Restaurant[]
+}
 
 const RestaurantsList = () => {
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setRestaurants(res))
+  }, [])
+
   return (
     <RestaurantListCSS>
       <RestaurantListUl>
-        {restaurantsData.map((restaurante) => (
+        {restaurants.map((restaurante) => (
           <li key={restaurante.id}>
-            <RestaurantCard
-              id={restaurante.id}
-              title={restaurante.title}
-              description={restaurante.description}
-              image={restaurante.image}
-              grade={restaurante.grade}
-              infos={restaurante.infos}
-              type={restaurante.type}
-            />
+            <RestaurantCard restaurant={restaurante} />
           </li>
         ))}
       </RestaurantListUl>
