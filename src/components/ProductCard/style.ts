@@ -3,17 +3,21 @@ import { cores } from '../../styles'
 import { ButtonCartCSS } from '../ButtonCart/styles'
 
 export const ProductCardCSS = styled.div`
-  background-color: ${cores.rosa};
-  max-width: 320px;
-  height: 338px;
-  color: ${cores.textoBotao};
-  padding: 8px;
-  letter-spacing: 0em;
-  text-align: left;
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 8px;
-  position: relative;
+
+  max-width: 320px;
+  height: 338px;
+  padding: 8px;
+
+  background-color: ${cores.rosa};
+
+  color: ${cores.textoBotao};
+  letter-spacing: 0em;
+  text-align: left;
+
   img {
     width: 100%;
     height: 167px;

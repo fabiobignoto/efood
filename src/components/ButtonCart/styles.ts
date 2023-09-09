@@ -2,14 +2,17 @@ import { styled } from 'styled-components'
 import { cores } from '../../styles'
 
 export const ButtonCartCSS = styled.div`
-  text-align: center;
   background-color: ${cores.textoBotao};
-  color: ${cores.rosa};
+  height: 24px;
+
+  padding: 4px;
+
   font-size: 14px;
+  color: ${cores.rosa};
+  text-align: center;
   font-weight: 700;
   line-height: 16px;
   letter-spacing: 0em;
-  padding: 4px;
+
   cursor: pointer;
-  height: 24px;
 `

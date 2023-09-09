@@ -3,24 +3,42 @@ import { cores } from '../../styles'
 
 import { Link } from 'react-router-dom'
 
-export const ButtonCSS = styled.div`
+import { Props } from '.'
+
+export const ButtonCSS = styled.div<Omit<Props, 'option' | 'size'>>`
   display: inline-block;
-  background-color: ${cores.rosa};
-  color: ${cores.textoBotao};
-  font-size: 14px;
-  padding: 4px 6px;
+  height: 26px;
+  width: ${(props) =>
+    props.children === 'Destaque da semana' ? '121px' : '61px'};
+
+  padding: 6px 4px;
   margin-right: 8px;
+
+  background-color: ${cores.rosa};
+
+  font-size: 12px;
+  color: ${cores.textoBotao};
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
 `
 export const ButtonLink = styled(Link)`
   display: inline-block;
-  background-color: ${cores.rosa};
-  color: ${cores.textoBotao};
-  font-size: 16px;
-  padding: 4px 6px;
+  width: 82px;
+  height: 24px;
   margin-right: 8px;
-  cursor: pointer;
+  padding: 4px 6px;
+
+  background-color: ${cores.rosa};
+
+  color: ${cores.textoBotao};
   text-decoration: none;
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
-  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  cursor: pointer;
 `

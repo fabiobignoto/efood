@@ -9,7 +9,6 @@ import {
 } from './styles'
 
 import estrela from '../../assets/images/estrela.svg'
-import { info } from 'console'
 
 type Props = {
   id: number
@@ -41,21 +40,16 @@ const RestaurantCard = ({
             <img src={estrela} alt="Estrela" />
           </div>
         </CardHeader>
-
         <Description>{description}</Description>
+        <Button option={id}>Saiba mais</Button>
         <Infos>
           {infos.map((info) => (
-            <Button size="small" key={info} option={-1}>
+            <Button key={info} option={-1}>
               {info}
             </Button>
           ))}
-          <Button size="small" option={-1}>
-            {type}
-          </Button>
+          <Button option={-1}>{type}</Button>
         </Infos>
-        <Button size="big" option={id}>
-          Saiba Mais
-        </Button>
       </CardContainer>
     </Card>
   )

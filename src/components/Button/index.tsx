@@ -1,18 +1,17 @@
 import { ButtonCSS, ButtonLink } from './styles'
 
 export type Props = {
-  size: 'big' | 'small'
   children: string
   option: number
 }
 
-const Button = ({ size, children, option }: Props) => {
+const Button = ({ children, option }: Props) => {
   const destiny = `/menu/:${option}`
 
-  return size === 'big' ? (
-    <ButtonLink to={destiny}>{children}</ButtonLink>
-  ) : (
+  return option === -1 ? (
     <ButtonCSS>{children}</ButtonCSS>
+  ) : (
+    <ButtonLink to={destiny}>{children}</ButtonLink>
   )
 }
 

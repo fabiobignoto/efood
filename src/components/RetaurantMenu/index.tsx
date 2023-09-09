@@ -1,6 +1,6 @@
 import {
-  ImageContainer,
   MainContainer,
+  ImageContainer,
   MenuContainer,
   MenuList,
   RestaurantInfo,

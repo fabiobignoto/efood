@@ -12,7 +12,6 @@ function App() {
         <EstilosGlobais />
         <Rotas />
       </BrowserRouter>
-      <Footer />
     </div>
   )
 }

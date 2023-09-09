@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import HeaderMenu from '../../components/HeaderMenu'
 import RestaurantMenu from '../../components/RetaurantMenu'
+import Footer from '../../components/Footer'
 
 const Menu = () => {
   const id = useParams().id?.slice(1).toString()
@@ -12,6 +13,7 @@ const Menu = () => {
     <div>
       <HeaderMenu />
       {!id ? '' : <RestaurantMenu restaurantId={restaurant} />}
+      <Footer />
     </div>
   )
 }
