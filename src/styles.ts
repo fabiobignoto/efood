@@ -14,11 +14,14 @@ export const EstilosGlobais = createGlobalStyle`
     box-sizing: border-box;
     list-style: none;
     font-family: 'Roboto', sans-serif;
+
   }
 
   body{
     background-color: ${cores.creme};
     color: ${cores.rosa};
+    line-height: 1;
+
   }
 
   #logo{

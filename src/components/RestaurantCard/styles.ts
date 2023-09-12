@@ -2,10 +2,15 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Card = styled.div`
-  width: 472px;
-  border: 1px solid ${cores.rosa};
-  background-color: ${cores.branca};
   position: relative;
+
+  display: grid;
+  gap: 0px;
+  width: 472px;
+  height: 398px;
+
+  background-color: ${cores.branca};
+
   .restaurantImage {
     width: 100%;
     height: 217px;
@@ -13,13 +18,21 @@ export const Card = styled.div`
   }
 `
 export const CardContainer = styled.div`
+  height: 181px;
   padding: 8px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+
+  border: 1px solid ${cores.rosa};
+  border-top: transparent;
 `
 
 export const CardHeader = styled.div`
+  height: 21px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 
   div {
     display: flex;
@@ -35,14 +48,13 @@ export const Title = styled.h2`
 `
 
 export const Description = styled.p`
-  font-family: Roboto;
+  height: 88px;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
-
-  margin: 16px 0;
 `
 export const Infos = styled.div`
   position: absolute;

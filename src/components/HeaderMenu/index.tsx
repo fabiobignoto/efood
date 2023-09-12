@@ -7,13 +7,16 @@ import {
 
 import logo from '../../assets/images/logo.svg'
 import background from '../../assets/images/BackgroundHero.svg'
+import { Link } from 'react-router-dom'
 
 const HeaderMenu = () => {
   return (
     <HeaderMenuCSS style={{ backgroundImage: `url(${background})` }}>
       <HeaderMenuContainer>
         <HeaderLink to={'/'}>Restaurantes</HeaderLink>
-        <img src={logo} alt="Logo da E-Food" id="logo" />
+        <Link to={'/'}>
+          <img src={logo} alt="Logo da E-Food" id="logo" />
+        </Link>
         <HeaderMenuText>0 produto(s) no carrinho</HeaderMenuText>
       </HeaderMenuContainer>
     </HeaderMenuCSS>

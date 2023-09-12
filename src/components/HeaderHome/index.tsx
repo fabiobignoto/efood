@@ -2,16 +2,15 @@ import { HeaderCSS, Slogan } from './styles'
 import background from '../../assets/images/BackgroundHero.svg'
 
 import logo from '../../assets/images/logo.svg'
+import { Link } from 'react-router-dom'
 
 const HeaderHome = () => {
   return (
     <HeaderCSS style={{ backgroundImage: `url(${background})` }}>
-      <img src={logo} alt="Logo da e-Food" id="logo" />
-      <Slogan>
-        Viva experiências gastronômicas
-        <br />
-        no conforto da sua casa
-      </Slogan>
+      <Link to={'/'}>
+        <img src={logo} alt="Logo da E-Food" id="logo" />
+      </Link>
+      <Slogan>Viva experiências gastronômicas no conforto da sua casa</Slogan>
     </HeaderCSS>
   )
 }

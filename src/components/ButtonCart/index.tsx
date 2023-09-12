@@ -7,7 +7,7 @@ type Props = {
 
 const ButtonCart = ({ action }: Props) => {
   return (
-    <ButtonCartCSS type="button">
+    <ButtonCartCSS>
       <p>{action}</p>
     </ButtonCartCSS>
   )

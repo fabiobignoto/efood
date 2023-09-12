@@ -22,6 +22,13 @@ const RestaurantCard = ({ restaurant }: Props) => {
   }
   topTags.push(restaurant.tipo)
 
+  const retornDescricao = (descricaoOriginal: string) => {
+    if (descricaoOriginal.length > 248) {
+      return `${descricaoOriginal.slice(0, 245)}...`
+    }
+    return descricaoOriginal
+  }
+
   return (
     <Card>
       <img className="restaurantImage" src={restaurant.capa} />
@@ -33,18 +40,15 @@ const RestaurantCard = ({ restaurant }: Props) => {
             <img src={estrela} alt="Estrela" />
           </div>
         </CardHeader>
-
-        <Description>{restaurant.descricao}</Description>
+        <Description>{retornDescricao(restaurant.descricao)}</Description>
+        <Button option={restaurant.id}>Saiba mais</Button>
         <Infos>
-          {topTags.map((info, index) => (
-            <Button size="small" key={index} option={-1}>
+          {topTags.map((info) => (
+            <Button key={info} option={-1}>
               {info}
             </Button>
           ))}
         </Infos>
-        <Button size="big" option={restaurant.id}>
-          Saiba Mais
-        </Button>
       </CardContainer>
     </Card>
   )
