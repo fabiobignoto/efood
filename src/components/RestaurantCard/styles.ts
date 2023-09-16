@@ -1,13 +1,15 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Card = styled.div`
   position: relative;
-
   display: grid;
-  gap: 0px;
   width: 472px;
   height: 398px;
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 310px;
+    height: 450px;
+  }
 
   background-color: ${cores.branca};
 
@@ -27,6 +29,10 @@ export const CardContainer = styled.div`
 
   border: 1px solid ${cores.rosa};
   border-top: transparent;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 233px;
+  }
 `
 
 export const CardHeader = styled.div`
@@ -55,6 +61,9 @@ export const Description = styled.p`
   line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
+  @media (max-width: ${breakpoints.tablet}) {
+    height: 140px;
+  }
 `
 export const Infos = styled.div`
   position: absolute;

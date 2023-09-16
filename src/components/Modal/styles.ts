@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonCartCSS } from '../ButtonCart/styles'
 
 export const ModalContainer = styled.div`
@@ -71,6 +71,15 @@ export const ModalStyle = styled.section`
     width: 16px;
 
     cursor: pointer;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    max-height: 100vh;
+    flex-direction: column;
+    max-width: 420px;
+
+    ${ButtonCartCSS} {
+      margin-top: 32px;
+    }
   }
 `
 export const ModalInformations = styled.div`

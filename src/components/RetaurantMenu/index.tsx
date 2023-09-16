@@ -4,7 +4,8 @@ import {
   MenuContainer,
   MenuList,
   RestaurantInfo,
-  RestaurantTitle
+  RestaurantTitle,
+  Overlay
 } from './styles'
 
 import ProductCard from '../ProductCard'
@@ -13,6 +14,10 @@ import Restaurant from '../../models/Restaurant'
 import { useState } from 'react'
 import Product from '../../models/Product'
 import Modal from '../Modal'
+import Cart from '../Cart'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { close } from '../../store/reducers/cartSlice'
 
 type Props = {
   restaurant: Restaurant
@@ -23,6 +28,9 @@ export interface ModalDetails extends Product {
 }
 
 const RestaurantMenu = ({ restaurant }: Props) => {
+  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const dispatcher = useDispatch()
+
   const [modalInformations, setModalInformations] = useState<ModalDetails>({
     modalIsVisible: false,
     descricao: '',
@@ -49,27 +57,34 @@ const RestaurantMenu = ({ restaurant }: Props) => {
     })
   }
 
+  const closeCart = () => {
+    dispatcher(close())
+  }
   return (
-    <main>
-      <MainContainer>
-        <ImageContainer style={{ backgroundImage: `url(${restaurant.capa})` }}>
-          <RestaurantInfo>{restaurant.tipo}</RestaurantInfo>
-          <RestaurantTitle>{restaurant.titulo}</RestaurantTitle>
-        </ImageContainer>
-        <MenuContainer>
-          <MenuList>
-            {restaurant.cardapio.map((item, index) => (
-              <li key={index}>
-                <ProductCard product={item} enviarDados={dataForModal} />
-              </li>
-            ))}
-          </MenuList>
-        </MenuContainer>
-      </MainContainer>
+    <MainContainer>
+      <ImageContainer style={{ backgroundImage: `url(${restaurant.capa})` }}>
+        <RestaurantInfo>{restaurant.tipo}</RestaurantInfo>
+        <RestaurantTitle>{restaurant.titulo}</RestaurantTitle>
+      </ImageContainer>
+      <MenuContainer>
+        <MenuList>
+          {restaurant.cardapio.map((item, index) => (
+            <li key={index}>
+              <ProductCard product={item} enviarDados={dataForModal} />
+            </li>
+          ))}
+        </MenuList>
+      </MenuContainer>
       {modalInformations.modalIsVisible && (
         <Modal product={modalInformations} resetData={resetModal} />
       )}
-    </main>
+      {isOpen && (
+        <>
+          <Overlay onClick={closeCart} />
+          <Cart />
+        </>
+      )}
+    </MainContainer>
   )
 }
 

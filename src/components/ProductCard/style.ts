@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { ButtonCartCSS } from '../ButtonCart/styles'
 
 export const ProductCardCSS = styled.div`
@@ -25,6 +25,11 @@ export const ProductCardCSS = styled.div`
 
   ${ButtonCartCSS} {
     width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 310px;
+    height: 400px;
   }
 `
 export const ProductName = styled.h3`

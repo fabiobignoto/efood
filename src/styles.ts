@@ -7,6 +7,11 @@ export const cores = {
   textoBotao: '#FFEBD9'
 }
 
+export const breakpoints = {
+  desktop: '1023px',
+  tablet: '768px'
+}
+
 export const EstilosGlobais = createGlobalStyle`
   * {
     margin: 0;

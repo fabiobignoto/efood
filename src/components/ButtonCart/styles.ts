@@ -1,9 +1,10 @@
 import { styled } from 'styled-components'
 import { cores } from '../../styles'
 
-export const ButtonCartCSS = styled.div`
+export const ButtonCartCSS = styled.button`
   background-color: ${cores.textoBotao};
   height: 24px;
+  width: 100%;
 
   padding: 4px;
 
