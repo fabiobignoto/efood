@@ -1,17 +1,15 @@
+import { useDispatch } from 'react-redux'
+
+import { priceFormat } from '../../utils/functions/priceFormat'
+
+import { add, cartOpen } from '../../store/reducers/cartSlice'
+
 import ButtonCart from '../ButtonCart'
-import {
-  ModalContainer,
-  ModalInformations,
-  ModalPhoto,
-  ModalProductDetails,
-  ModalStyle
-} from './styles'
+import { ModalDetails } from '../RetaurantMenu'
 
 import close from '../../assets/images/fechar.png'
-import { ModalDetails } from '../RetaurantMenu'
-import { priceFormat } from '../../utils/functions/priceFormat'
-import { useDispatch } from 'react-redux'
-import { add, open } from '../../store/reducers/cartSlice'
+
+import * as S from './styles'
 
 type Props = {
   product: ModalDetails
@@ -29,33 +27,33 @@ const Modal = ({ product, resetData }: Props) => {
   const addToCart = () => {
     dispatcher(add(product))
     closeModal()
-    dispatcher(open())
+    dispatcher(cartOpen())
   }
 
   return (
-    <ModalContainer>
-      <ModalStyle>
-        <ModalPhoto src={product.foto} alt={`Foto do item ${product.nome}`} />
-        <ModalInformations>
+    <S.ModalContainer>
+      <S.ModalStyle>
+        <S.ModalPhoto src={product.foto} alt={`Foto do item ${product.nome}`} />
+        <S.ModalInformations>
           <h3>{product.nome}</h3>
-          <ModalProductDetails>
+          <S.ModalProductDetails>
             <p>{product.descricao}</p>
             <p>{`Serve: ${product.porcao}`}</p>
-          </ModalProductDetails>
+          </S.ModalProductDetails>
           <ButtonCart
             action={`Adicionar ao Carrinho - ${preco}`}
             clickAction={addToCart}
           />
-        </ModalInformations>
+        </S.ModalInformations>
         <img
           src={close}
           alt="Clique aqui para fechar a descrição do produto"
           className="closeButton"
           onClick={closeModal}
         />
-      </ModalStyle>
+      </S.ModalStyle>
       <div className="overlay" onClick={closeModal}></div>
-    </ModalContainer>
+    </S.ModalContainer>
   )
 }
 

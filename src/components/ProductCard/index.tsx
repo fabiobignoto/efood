@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
+
 import Product from '../../models/Product'
+
 import ButtonCart from '../ButtonCart'
-import { ProductCardCSS, ProductDescription, ProductName } from './style'
 import { ModalDetails } from '../RetaurantMenu'
+
+import * as S from './style'
 
 interface Props {
   product: Product
@@ -34,16 +37,16 @@ const ProductCard = ({ product, enviarDados }: Props) => {
 
   return (
     <>
-      <ProductCardCSS>
+      <S.ProductCardCSS>
         <img src={product.foto} />
-        <ProductName>{product.nome}</ProductName>
-        <ProductDescription>
+        <S.ProductName>{product.nome}</S.ProductName>
+        <S.ProductDescription>
           <p>{descricao}</p>
-        </ProductDescription>
+        </S.ProductDescription>
         <div onClick={enviarDadosParaModal}>
           <ButtonCart action="Mais Detalhes" />
         </div>
-      </ProductCardCSS>
+      </S.ProductCardCSS>
     </>
   )
 }

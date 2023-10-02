@@ -1,17 +1,20 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+
+import { breakpoints, colors } from '../../styles'
 
 export const CartProductCardCSS = styled.div`
-  background-color: ${cores.textoBotao};
-  display: flex;
-  padding: 8px;
-  gap: 8px;
-  height: 100px;
-  margin-top: 16px;
   position: relative;
 
+  background-color: ${colors.textoBotao};
+  display: flex;
+  gap: 8px;
+
+  height: 100px;
+  padding: 8px;
+  margin-top: 16px;
+
   div {
-    color: ${cores.rosa};
+    color: ${colors.rosa};
     letter-spacing: 0em;
   }
   img {
@@ -27,20 +30,24 @@ export const CartProductCardCSS = styled.div`
   p {
     position: absolute;
     bottom: 32px;
+
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
     text-align: left;
+
     @media (max-width: ${breakpoints.tablet}) {
       bottom: 16px;
     }
   }
 `
 export const DeleteIcon = styled.img`
-  width: 16px;
-  height: 16px;
   position: absolute;
   bottom: 8px;
   right: 8px;
+
+  width: 16px;
+  height: 16px;
+
   cursor: pointer;
 `

@@ -1,6 +1,8 @@
 import { styled } from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+
 import { ButtonCartCSS } from '../ButtonCart/styles'
+
+import { breakpoints, colors } from '../../styles'
 
 export const ModalContainer = styled.div`
   position: fixed;
@@ -42,9 +44,9 @@ export const ModalStyle = styled.section`
   width: 100%;
   height: 100%;
 
-  background-color: ${cores.rosa};
+  background-color: ${colors.rosa};
 
-  color: ${cores.branca};
+  color: ${colors.branca};
   line-height: 22px;
 
   h3 {
@@ -75,7 +77,7 @@ export const ModalStyle = styled.section`
   @media (max-width: ${breakpoints.tablet}) {
     max-height: 100vh;
     flex-direction: column;
-    max-width: 420px;
+    max-width: 340px;
 
     ${ButtonCartCSS} {
       margin-top: 32px;

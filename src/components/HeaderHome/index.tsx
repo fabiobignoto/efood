@@ -1,8 +1,9 @@
-import { HeaderCSS, Slogan } from './styles'
-import background from '../../assets/images/BackgroundHero.svg'
-
-import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
+
+import background from '../../assets/images/BackgroundHero.svg'
+import logo from '../../assets/images/logo.svg'
+
+import { HeaderCSS, Slogan } from './styles'
 
 const HeaderHome = () => {
   return (

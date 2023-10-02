@@ -1,15 +1,10 @@
+import Restaurant from '../../models/Restaurant'
+
 import Button from '../Button'
-import {
-  Card,
-  CardContainer,
-  CardHeader,
-  Description,
-  Infos,
-  Title
-} from './styles'
 
 import estrela from '../../assets/images/estrela.svg'
-import Restaurant from '../../models/Restaurant'
+
+import * as S from './styles'
 
 type Props = {
   restaurant: Restaurant
@@ -30,27 +25,27 @@ const RestaurantCard = ({ restaurant }: Props) => {
   }
 
   return (
-    <Card>
+    <S.Card>
       <img className="restaurantImage" src={restaurant.capa} />
-      <CardContainer>
-        <CardHeader>
-          <Title>{restaurant.titulo}</Title>
+      <S.CardContainer>
+        <S.CardHeader>
+          <S.Title>{restaurant.titulo}</S.Title>
           <div>
-            <Title as="span">{restaurant.avaliacao}</Title>
+            <S.Title as="span">{restaurant.avaliacao}</S.Title>
             <img src={estrela} alt="Estrela" />
           </div>
-        </CardHeader>
-        <Description>{retornDescricao(restaurant.descricao)}</Description>
+        </S.CardHeader>
+        <S.Description>{retornDescricao(restaurant.descricao)}</S.Description>
         <Button option={restaurant.id}>Saiba mais</Button>
-        <Infos>
+        <S.Infos>
           {topTags.map((info) => (
             <Button key={info} option={-1}>
               {info}
             </Button>
           ))}
-        </Infos>
-      </CardContainer>
-    </Card>
+        </S.Infos>
+      </S.CardContainer>
+    </S.Card>
   )
 }
 

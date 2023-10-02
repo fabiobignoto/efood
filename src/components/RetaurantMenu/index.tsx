@@ -1,23 +1,18 @@
-import {
-  MainContainer,
-  ImageContainer,
-  MenuContainer,
-  MenuList,
-  RestaurantInfo,
-  RestaurantTitle,
-  Overlay
-} from './styles'
-
-import ProductCard from '../ProductCard'
-import Restaurant from '../../models/Restaurant'
-
 import { useState } from 'react'
-import Product from '../../models/Product'
-import Modal from '../Modal'
-import Cart from '../Cart'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { RootReducer } from '../../store'
-import { close } from '../../store/reducers/cartSlice'
+import { cartClose, checkoutClose } from '../../store/reducers/cartSlice'
+
+import Restaurant from '../../models/Restaurant'
+import Product from '../../models/Product'
+
+import Cart from '../Cart'
+import Checkout from '../Checkout'
+import Modal from '../Modal'
+import ProductCard from '../ProductCard'
+
+import * as S from './styles'
 
 type Props = {
   restaurant: Restaurant
@@ -28,7 +23,9 @@ export interface ModalDetails extends Product {
 }
 
 const RestaurantMenu = ({ restaurant }: Props) => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isCartOpen, isInCheckoutForms } = useSelector(
+    (state: RootReducer) => state.cart
+  )
   const dispatcher = useDispatch()
 
   const [modalInformations, setModalInformations] = useState<ModalDetails>({
@@ -58,33 +55,47 @@ const RestaurantMenu = ({ restaurant }: Props) => {
   }
 
   const closeCart = () => {
-    dispatcher(close())
+    dispatcher(cartClose())
+    dispatcher(checkoutClose())
   }
+
   return (
-    <MainContainer>
-      <ImageContainer style={{ backgroundImage: `url(${restaurant.capa})` }}>
-        <RestaurantInfo>{restaurant.tipo}</RestaurantInfo>
-        <RestaurantTitle>{restaurant.titulo}</RestaurantTitle>
-      </ImageContainer>
-      <MenuContainer>
-        <MenuList>
-          {restaurant.cardapio.map((item, index) => (
-            <li key={index}>
-              <ProductCard product={item} enviarDados={dataForModal} />
-            </li>
-          ))}
-        </MenuList>
-      </MenuContainer>
-      {modalInformations.modalIsVisible && (
-        <Modal product={modalInformations} resetData={resetModal} />
-      )}
-      {isOpen && (
+    <S.MainContainer>
+      <div className={isCartOpen || isInCheckoutForms ? 'scroll-blocked' : ''}>
+        <S.ImageContainer
+          style={{ backgroundImage: `url(${restaurant.capa})` }}
+        >
+          <S.RestaurantInfo>{restaurant.tipo}</S.RestaurantInfo>
+          <S.RestaurantTitle>{restaurant.titulo}</S.RestaurantTitle>
+        </S.ImageContainer>
+        <S.MenuContainer>
+          <S.MenuList>
+            {restaurant.cardapio.map((item, index) => (
+              <li key={index}>
+                <ProductCard product={item} enviarDados={dataForModal} />
+              </li>
+            ))}
+          </S.MenuList>
+        </S.MenuContainer>
+        {modalInformations.modalIsVisible && (
+          <Modal product={modalInformations} resetData={resetModal} />
+        )}
+      </div>
+
+      {isCartOpen && !isInCheckoutForms && (
         <>
-          <Overlay onClick={closeCart} />
+          <S.Overlay onClick={closeCart} />
           <Cart />
         </>
       )}
-    </MainContainer>
+      {isCartOpen && isInCheckoutForms && (
+        <>
+          <S.Overlay onClick={closeCart} />
+
+          <Checkout />
+        </>
+      )}
+    </S.MainContainer>
   )
 }
 

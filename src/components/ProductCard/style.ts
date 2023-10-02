@@ -1,6 +1,8 @@
 import { styled } from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+
 import { ButtonCartCSS } from '../ButtonCart/styles'
+
+import { breakpoints, colors } from '../../styles'
 
 export const ProductCardCSS = styled.div`
   position: relative;
@@ -12,9 +14,9 @@ export const ProductCardCSS = styled.div`
   height: 338px;
   padding: 8px;
 
-  background-color: ${cores.rosa};
+  background-color: ${colors.rosa};
 
-  color: ${cores.textoBotao};
+  color: ${colors.textoBotao};
   letter-spacing: 0em;
   text-align: left;
 
@@ -50,12 +52,4 @@ export const ProductDescription = styled.div`
     height: 100%;
     overflow: hidden;
   }
-`
-
-export const Teste = styled.div`
-  position: absolute;
-  top: 20px;
-  width: 500px;
-  height: 200px;
-  background-color: green;
 `

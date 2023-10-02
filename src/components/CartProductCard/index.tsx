@@ -1,8 +1,12 @@
-import { priceFormat } from '../../utils/functions/priceFormat'
-import { CartProductCardCSS, DeleteIcon } from './styles'
-import deleteIcon from '../../assets/images/deleteIcon.png'
 import { useDispatch } from 'react-redux'
+
+import { priceFormat } from '../../utils/functions/priceFormat'
+
 import { CardProduct, remove } from '../../store/reducers/cartSlice'
+
+import * as S from './styles'
+
+import deleteIcon from '../../assets/images/deleteIcon.png'
 
 const CartProductCard = (cartItem: CardProduct) => {
   const dispatcher = useDispatch()
@@ -12,7 +16,7 @@ const CartProductCard = (cartItem: CardProduct) => {
   }
 
   return (
-    <CartProductCardCSS>
+    <S.CartProductCardCSS>
       <img
         src={cartItem.product.foto}
         alt={`Fotografia ilustrativa do prato ${cartItem.product.nome}`}
@@ -21,12 +25,12 @@ const CartProductCard = (cartItem: CardProduct) => {
         <h3>{cartItem.product.nome}</h3>
         <p>{priceFormat(cartItem.product.preco)}</p>
       </div>
-      <DeleteIcon
+      <S.DeleteIcon
         src={deleteIcon}
         alt="Clique aqui para remover este item do carrinho"
         onClick={removeFromCart}
       />
-    </CartProductCardCSS>
+    </S.CartProductCardCSS>
   )
 }
 

@@ -1,7 +1,11 @@
-import Restaurant from '../../models/Restaurant'
 import { useGetRestaurantsListQuery } from '../../services/api'
+
+import Restaurant from '../../models/Restaurant'
+
 import RestaurantCard from '../RestaurantCard'
-import { RestaurantListCSS, RestaurantListUl } from './styles'
+
+import * as S from './styles'
+import Loader from '../Loader'
 
 export type Restaurants = {
   restaurants: Restaurant[]
@@ -12,18 +16,18 @@ const RestaurantsList = () => {
 
   if (restaurants)
     return (
-      <RestaurantListCSS>
-        <RestaurantListUl>
+      <S.RestaurantListCSS>
+        <S.RestaurantListUl>
           {restaurants.map((restaurante) => (
             <li key={restaurante.id}>
               <RestaurantCard restaurant={restaurante} />
             </li>
           ))}
-        </RestaurantListUl>
-      </RestaurantListCSS>
+        </S.RestaurantListUl>
+      </S.RestaurantListCSS>
     )
 
-  return <h3>Carregando...</h3>
+  return <Loader />
 }
 
 export default RestaurantsList

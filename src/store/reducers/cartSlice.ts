@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+
 import Product from '../../models/Product'
 
 export type CardProduct = {
@@ -8,12 +9,14 @@ export type CardProduct = {
 
 type CartState = {
   items: CardProduct[]
-  isOpen: boolean
+  isCartOpen: boolean
+  isInCheckoutForms: boolean
 }
 
 const initialState: CartState = {
-  isOpen: false,
-  items: []
+  isCartOpen: false,
+  items: [],
+  isInCheckoutForms: false
 }
 
 const cartSlice = createSlice({
@@ -29,15 +32,37 @@ const cartSlice = createSlice({
     },
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
+      state.items.map((item) => {
+        if (item.id > action.payload) {
+          item.id = item.id - 1
+        }
+      })
     },
-    open: (state) => {
-      state.isOpen = true
+    cartOpen: (state) => {
+      state.isCartOpen = true
     },
-    close: (state) => {
-      state.isOpen = false
+    cartClose: (state) => {
+      state.isCartOpen = false
+    },
+    cartEmpty: (state) => {
+      state.items = []
+    },
+    checkoutOpen: (state) => {
+      state.isInCheckoutForms = true
+    },
+    checkoutClose: (state) => {
+      state.isInCheckoutForms = false
     }
   }
 })
 
-export const { add, remove, open, close } = cartSlice.actions
+export const {
+  add,
+  remove,
+  cartOpen,
+  cartClose,
+  cartEmpty,
+  checkoutOpen,
+  checkoutClose
+} = cartSlice.actions
 export default cartSlice.reducer

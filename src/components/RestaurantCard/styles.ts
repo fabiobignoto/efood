@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+
+import { breakpoints, colors } from '../../styles'
 
 export const Card = styled.div`
   position: relative;
+
   display: grid;
   width: 472px;
   height: 398px;
@@ -11,11 +13,12 @@ export const Card = styled.div`
     height: 450px;
   }
 
-  background-color: ${cores.branca};
+  background-color: ${colors.branca};
 
   .restaurantImage {
     width: 100%;
     height: 217px;
+
     object-fit: cover;
   }
 `
@@ -27,7 +30,7 @@ export const CardContainer = styled.div`
   grid-template-columns: 1fr;
   gap: 16px;
 
-  border: 1px solid ${cores.rosa};
+  border: 1px solid ${colors.rosa};
   border-top: transparent;
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -36,9 +39,9 @@ export const CardContainer = styled.div`
 `
 
 export const CardHeader = styled.div`
-  height: 21px;
   display: flex;
   justify-content: space-between;
+  height: 21px;
 
   div {
     display: flex;
@@ -61,6 +64,7 @@ export const Description = styled.p`
   line-height: 22px;
   letter-spacing: 0em;
   text-align: left;
+
   @media (max-width: ${breakpoints.tablet}) {
     height: 140px;
   }

@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+
+import { breakpoints, colors } from '../../styles'
 
 export const MainContainer = styled.div`
   position: relative;
@@ -37,7 +38,7 @@ const RestaurantDetails = styled.h3`
   position: absolute;
 
   font-size: 32px;
-  color: ${cores.branca};
+  color: ${colors.branca};
   line-height: 38px;
   letter-spacing: 0em;
   text-align: left;
@@ -63,10 +64,12 @@ export const MenuList = styled.ul`
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+
   @media (max-width: ${breakpoints.desktop}) {
     padding-left: 48px;
     padding-right: 48px;
   }
+
   @media (max-width: ${breakpoints.tablet}) {
     padding: 0;
     justify-content: center;
@@ -76,10 +79,13 @@ export const Overlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+
+  display: block;
+
   height: 100vh;
   width: 100vw;
   background-color: black;
   opacity: 0.6;
+
   z-index: 1;
-  display: block;
 `

@@ -1,4 +1,4 @@
-import { ButtonCSS, ButtonLink } from './styles'
+import * as S from './styles'
 
 export type Props = {
   children: string
@@ -9,9 +9,9 @@ const Button = ({ children, option }: Props) => {
   const destiny = `/menu/${option}`
 
   return option === -1 ? (
-    <ButtonCSS>{children}</ButtonCSS>
+    <S.ButtonCSS>{children}</S.ButtonCSS>
   ) : (
-    <ButtonLink to={destiny}>{children}</ButtonLink>
+    <S.ButtonLink to={destiny}>{children}</S.ButtonLink>
   )
 }
 

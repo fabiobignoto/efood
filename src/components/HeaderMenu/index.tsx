@@ -1,38 +1,34 @@
-import {
-  HeaderLink,
-  HeaderMenuCSS,
-  HeaderMenuContainer,
-  HeaderMenuText,
-  ImgDiv
-} from './styles'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { RootReducer } from '../../store'
+import { cartOpen } from '../../store/reducers/cartSlice'
 
 import logo from '../../assets/images/logo.svg'
 import background from '../../assets/images/BackgroundHero.svg'
-import { RootReducer } from '../../store'
-import { useDispatch, useSelector } from 'react-redux'
-import { open } from '../../store/reducers/cartSlice'
-import { Link } from 'react-router-dom'
+
+import * as S from './styles'
 
 const HeaderMenu = () => {
   const dispatcher = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
-    dispatcher(open())
+    dispatcher(cartOpen())
   }
 
   return (
-    <HeaderMenuCSS style={{ backgroundImage: `url(${background})` }}>
-      <HeaderMenuContainer>
+    <S.HeaderMenuCSS style={{ backgroundImage: `url(${background})` }}>
+      <S.HeaderMenuContainer>
         <div>
-          <HeaderLink to={'/'}>Restaurantes</HeaderLink>
+          <S.HeaderLink to={'/'}>Restaurantes</S.HeaderLink>
         </div>
-        <ImgDiv>
+        <S.ImgDiv>
           <Link to={'/'}>
             <img src={logo} alt="Logo da E-Food" id="logo" />
           </Link>
-        </ImgDiv>
-        <HeaderMenuText>
+        </S.ImgDiv>
+        <S.HeaderMenuText>
           <span id="longCartDescription" onClick={openCart}>
             {items.length} produto(s) no carrinho
           </span>
@@ -40,9 +36,9 @@ const HeaderMenu = () => {
             Carrinho: <br />
             {items.length} produto(s)
           </span>
-        </HeaderMenuText>
-      </HeaderMenuContainer>
-    </HeaderMenuCSS>
+        </S.HeaderMenuText>
+      </S.HeaderMenuContainer>
+    </S.HeaderMenuCSS>
   )
 }
 

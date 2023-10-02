@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+
+import { colors } from '../../styles'
 
 export const FooterCSS = styled.footer`
   width: 100%;
@@ -7,7 +8,7 @@ export const FooterCSS = styled.footer`
 
   padding: 40px;
 
-  background-color: ${cores.textoBotao};
+  background-color: ${colors.textoBotao};
   text-align: center;
 `
 
